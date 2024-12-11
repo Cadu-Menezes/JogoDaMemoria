@@ -7,13 +7,29 @@ const timer = document.querySelector('.timer')
 let primeiraCarta = '';
 let segundaCarta = '';
 
+lista_jogadores = JSON.parse(localStorage.getItem('jogadores')) || [];
+
 const checarVitoria= () => {
+
     const cartasDesabilitadas = document.querySelectorAll('.desabilitarCarta')
 
     if(cartasDesabilitadas.length == 20){
+        
         clearInterval(this.loop)
         alert(`Parabens, ${spanPlayer.innerHTML}! Seu tempo foi: ${timer.innerHTML} segundos!`)
+        
+        Jogador = {
+            nome : spanPlayer.innerHTML,
+            tempo : timer.innerHTML
+        }
+
+        lista_jogadores.push(Jogador);
+        console.log(lista_jogadores);
+
+        localStorage.setItem('jogadores', JSON.stringify(lista_jogadores))
     }
+
+   
 }
 
 const checarCartas = () => {

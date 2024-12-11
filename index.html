@@ -19,7 +19,39 @@
         
         <input type="text" placeholder="Nome" class="login__input">
         <button type="submit" class="login__button" disabled>Jogar</button>
-    
+        
+        <div class="tabelaJogadores">
+            <table class="players__table">
+                <thead>
+                    <tr>
+                        <th>Posição</th>
+                        <th>Nome</th>
+                        <th>Tempo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <script>
+                        let lista_jogadores = JSON.parse(localStorage.getItem('jogadores')) || [];
+                        
+                        // Ordena a lista de jogadores pelo tempo
+                        lista_jogadores.sort((a, b) => a.tempo - b.tempo);
+                        
+                        // Adiciona a posição de cada jogador
+                        lista_jogadores.forEach((jogador, index) => {
+                            document.write(`
+                                <tr>
+                                    <td>${index + 1}</td>
+                                    <td>${jogador.nome}</td>
+                                    <td>${jogador.tempo}</td>
+                                </tr>
+                            `);
+                        });
+                    </script>
+                </tbody>
+            </table>
+        </div>
+
     </form>    
 </body>
+
 </html>
